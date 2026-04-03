@@ -37,6 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'apps.common',
+    'apps.users',
+    'apps.authentication',
+    'apps.planets',
+    'apps.constellations',
+    'apps.solar_systems',
+    'apps.community',
+    'apps.media_assets',
+    'apps.gestures',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
