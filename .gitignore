@@ -1,21 +1,29 @@
-# Entornos virtuales
+# Global
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Entornos
 venv/
 .venv/
 env/
 
-# Python
-__pycache__/
-*.pyc
+# Variables
+.env
+.env.*
 
 # Django
 db.sqlite3
 media/
 staticfiles/
 
-# Env
-.env
-
-# Testing
-.coverage
-htmlcov/
-.pytest_cache/
+# Logs
+*.log

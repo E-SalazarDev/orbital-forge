@@ -1,11 +1,20 @@
-env/
+# Backend Python
+venv/
 .venv/
+env/
 __pycache__/
-*.pyc
-.env
+*.py[cod]
+
+# Django
 db.sqlite3
 media/
 staticfiles/
+
+# Env
+.env
+.env.*
+
+# Testing
 .coverage
 htmlcov/
 .pytest_cache/
