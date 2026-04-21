@@ -1,121 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function HomePage() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="min-h-screen bg-black text-white">
+      <header className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md">
+        <h1 className="text-xl font-bold tracking-wide">Orbital Forge</h1>
+
+        <nav className="flex gap-6 text-sm">
+          <a href="#explorar">Explorar</a>
+          <a href="#constelaciones">Constelaciones</a>
+          <a href="#comunidad">Comunidad</a>
+          <a href="#crear">Crear</a>
+        </nav>
+      </header>
+
+      <main className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="h-full w-full bg-gradient-to-b from-slate-950 via-black to-slate-900" />
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+
+        <section className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-cyan-300">
+            Plataforma espacial interactiva
           </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+          <h2 className="mb-6 text-5xl font-bold leading-tight">
+            Explora el universo. <br />
+            Crea tu propio sistema solar.
+          </h2>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-slate-300">
+            Descubre planetas, constelaciones y sistemas solares creados por la
+            comunidad en una experiencia web moderna e inmersiva.
+          </p>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="rounded-full bg-cyan-400 px-6 py-3 font-semibold text-black">
+              Explorar ahora
+            </button>
+
+            <button className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white">
+              Crear mi sistema
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
+  )
+}
