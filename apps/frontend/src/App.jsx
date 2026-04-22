@@ -16,7 +16,7 @@ function HomePage() {
 
       <main className="relative flex min-h-screen items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="h-full w-full bg-gradient-to-b from-slate-950 via-black to-slate-900" />
+          <div className="h-full w-full bg-linear-to-b from-slate-950 via-black to-slate-900" />
         </div>
 
         <section className="relative z-10 mx-auto max-w-4xl px-6 text-center">

@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /code-back
 
 COPY apps/backend/requirements/dev.txt /tmp/requirements.txt
-RUN pip install --upgrade pip && install -r /tmp/requirements.txt
+RUN pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 COPY apps/backend /code-back/
 
