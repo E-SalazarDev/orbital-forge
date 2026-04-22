@@ -1,13 +1,16 @@
-FROM python:3.11
+FROM python:3.11-slim
 
-WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-COPY apps/backend/requirements/dev.txt /app/requirements.txt
-RUN pip install -r /app/requirements.txt
 
-COPY apps/backend /app/backend
+WORKDIR /code-back
 
-WORKDIR /app/backend
+COPY apps/backend/requirements/dev.txt /tmp/requirements.txt
+RUN pip install --upgrade pip && install -r /tmp/requirements.txt
+
+COPY apps/backend /code-back/
+
 
 EXPOSE 8000
 
