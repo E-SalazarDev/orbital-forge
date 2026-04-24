@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Stars } from '@react-three/drei'
 
 function HomePage() {
   return (
@@ -31,6 +33,7 @@ function HomePage() {
               Crear mi sistema
             </button>
           </div>
+          
         </section>
       </main>
     </div>
@@ -42,5 +45,31 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
     </Routes>
+  )
+}
+
+function ModularShip() {
+  return (
+    <group>
+      <mesh>
+        <boxGeometry args={[1.4, 0.4, 2]} />
+        <meshStandardMaterial color="#334155" />
+      </mesh>
+
+      <mesh position={[0, 0.35, -0.4]}>
+        <boxGeometry args={[0.7, 0.35, 0.8]} />
+        <meshStandardMaterial color="#22d3ee" />
+      </mesh>
+
+      <mesh position={[-1, 0, 0.2]}>
+        <boxGeometry args={[1.5, 0.12, 0.7]} />
+        <meshStandardMaterial color="#f59e0b" />
+      </mesh>
+
+      <mesh position={[1, 0, 0.2]}>
+        <boxGeometry args={[1.5, 0.12, 0.7]} />
+        <meshStandardMaterial color="#f59e0b" />
+      </mesh>
+    </group>
   )
 }
