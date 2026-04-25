@@ -1,23 +1,27 @@
 
 import { PerspectiveCamera } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber'
+import { Stars } from '@react-three/drei'
+export default function HomeScene({ children }) {
 
-export default function HomeScene({children}) {
 
 
+  return (
+    <div className='w-full h-screen'>
 
-    return(
-        
-             <Canvas
-               camera={{
-                   fov: 30,
-                  near: 0.1,
-                  far: 200,
-                  position: [0,0,100]
-               }}
-             >
+      <Canvas
+        camera={{
+          fov: 60,
+          near: 0.1,
+          far: 1000,
+          position: [0, 0, 10]
+        }}
+      >
 
-                
-             </Canvas>
-    )
+       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+
+
+      </Canvas>
+    </div>
+  )
 }

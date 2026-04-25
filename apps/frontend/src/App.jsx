@@ -5,7 +5,7 @@ import HomeScene from './scenes/home/Scenes'
 function HomePage() {
   return (
 
-    <div className="min-h-screen bg-sky-800 text-white">
+    <div className="min-h-screen bg-black text-white">
         <HomeScene/>
     </div>
    
