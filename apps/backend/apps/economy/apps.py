@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SolarSystemsConfig(AppConfig):
+class EconomyConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.solar_systems'
+    name = 'apps.economy'
