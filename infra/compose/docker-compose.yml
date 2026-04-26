@@ -1,40 +1,38 @@
-services: 
-  backend: 
+services:
+  backend:
     build:
-     context: ../..
-     dockerfile: infra/docker/backend/Dockerfile
+      context: ../..
+      dockerfile: infra/docker/backend/Dockerfile
     container_name: orbital_forge_backend
     command: python manage.py runserver 0.0.0.0:8000
     working_dir: /code-back
-    volumes: 
-     - ../../apps/backend:/code-back
+    volumes:
+      - ../../apps/backend:/code-back
     ports:
-     - "8000:8000"
+      - "8000:8000"
     env_file:
-     - ../../apps/backend/.env
+      - ../../apps/backend/.env.docker
     depends_on:
-     postgres:
-      condition: service_healthy
+      postgres:
+        condition: service_healthy
 
   postgres:
-
     image: postgres:16
     container_name: orbital_forge_postgres
     restart: unless-stopped
- 
     environment:
       POSTGRES_DB: orbital_forge
       POSTGRES_USER: orbital_user
       POSTGRES_PASSWORD: orbital_password
-
     ports:
-     - "5432:5432"
-    volumes: 
-     - postgres_data:/var/lib/postgresql/data
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-     test: ["CMD-SHELL", "pg_isready -U orbital_user -d orbital_forge"]
-     interval: 10s
-     timeout: 5s
-     retries: 5
+      test: ["CMD-SHELL", "pg_isready -U orbital_user -d orbital_forge"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
- postgres_data:      
+  postgres_data:
