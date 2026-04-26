@@ -18,7 +18,15 @@ export default function HomeScene({ children }) {
         }}
       >
 
-       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        <Stars
+          radius={100} //radio de distribución
+          depth={50}    // profundidad de distribución, más alto hace que se extienda más lejos desde el centro 
+          count={4000}  // num de estrellas generadas
+          factor={7}   // tamaño y brillo de cada estrela 
+          saturation={0} //color de estrellas añade más color
+          fade           // cuando se tiene desvanece los bordes 
+          speed={1.6}    //regula la velocidad de pulso
+        />
 
 
       </Canvas>
