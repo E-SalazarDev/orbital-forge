@@ -23,7 +23,7 @@ export default function HomeScene({ children }) {
 
         <Stars
           radius={100} //radio de distribución
-          depth={50}    // profundidad de distribución, más alto hace que se extienda más lejos desde el centro 
+          depth={60}    // profundidad de distribución, más alto hace que se extienda más lejos desde el centro 
           count={4000}  // num de estrellas generadas
           factor={7}   // tamaño y brillo de cada estrela 
           saturation={0} //color de estrellas añade más color
@@ -32,7 +32,11 @@ export default function HomeScene({ children }) {
         />
 
         <OrbitControls 
-        enableZoom={false}
+        enableZoom={true}
+        enablePan={true}
+        enableRotate={true}
+        minDistance={2}
+        //  maxDistance={40}
         // autoRotate  
         />
 
@@ -41,3 +45,5 @@ export default function HomeScene({ children }) {
     </div>
   )
 }
+
+ 
