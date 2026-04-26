@@ -6,9 +6,6 @@ function HomePage() {
   return (
 
     <div className="min-h-screen bg-black text-white ">
-      <div className="absolute inset-0 z-0">
-        <div className="h-full w-full bg-linear-to-b mask-t-from-sky-950 via-slate-950 to-purple-950" />
-      </div>
 
       <HomeScene />
     </div>
