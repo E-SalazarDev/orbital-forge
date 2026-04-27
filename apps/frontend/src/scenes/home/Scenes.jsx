@@ -6,7 +6,6 @@ import { Stars } from '@react-three/drei'
 export default function HomeScene({ children }) {
 
 
-
   return (
     <div className='w-full h-screen'>
 
@@ -30,6 +29,15 @@ export default function HomeScene({ children }) {
           fade           // cuando se tiene desvanece los bordes 
           speed={1.6}    //regula la velocidad de pulso
         />
+
+        <gridHelper 
+        args={[
+          10, //tamaño grid 
+          10,  // num divisiones que divide cada lado del grid
+          0x444444, //color lineas x y 
+          0x888888  //color de las demas líneas
+        ]}/>
+
 
         <OrbitControls 
         enableZoom={true}
