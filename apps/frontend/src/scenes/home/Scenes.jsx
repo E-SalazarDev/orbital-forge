@@ -22,7 +22,7 @@ export default function HomeScene({ children }) {
 
         <Stars
           radius={100} //radio de distribución
-          depth={60}    // profundidad de distribución, más alto hace que se extienda más lejos desde el centro 
+          depth={50}    // profundidad de distribución, más alto hace que se extienda más lejos desde el centro 
           count={4000}  // num de estrellas generadas
           factor={7}   // tamaño y brillo de cada estrela 
           saturation={0} //color de estrellas añade más color
