@@ -17,7 +17,9 @@ export default function HomeScene({ children }) {
           position: [0, 0, 10]
         }}
       >
+        {/* <color attach="background" args={['#100000']} /> */}
 
+        {/* <ambientLight intensity={10} /> */}
         {/* <PerspectiveCamera makeDefault position={[0, 0, 3]} /> */}
 
         <Stars
@@ -30,20 +32,20 @@ export default function HomeScene({ children }) {
           speed={1.6}    //regula la velocidad de pulso
         />
 
-        <gridHelper 
-        args={[
-          10, //tamaño grid 
-          10,  // num divisiones que divide cada lado del grid
-          0x444444, //color lineas x y 
-          0x888888  //color de las demas líneas
-        ]}/>
+        <gridHelper
+          args={[
+            10, //tamaño grid 
+            10,  // num divisiones que divide cada lado del grid
+            0x444444, //color lineas x y 
+            0x888888  //color de las demas líneas
+          ]} />
 
 
-        <OrbitControls 
-        enableZoom={true}
-        enablePan={true}
-        enableRotate={true}
-        minDistance={2}
+        <OrbitControls
+          enableZoom={true}
+          enablePan={true}
+          enableRotate={true}
+          minDistance={2}
         //  maxDistance={40}
         // autoRotate  
         />
@@ -54,4 +56,3 @@ export default function HomeScene({ children }) {
   )
 }
 
- 
