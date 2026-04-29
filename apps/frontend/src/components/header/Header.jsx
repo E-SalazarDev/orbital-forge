@@ -1,14 +1,32 @@
 export default function Header({}) {
   return (
-    <header className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md">
-      <h1 className="text-xl font-bold tracking-wide">Orbital Forge</h1>
+    <header className="bg-purple-600/20 flex justify-center py-7 gap-x-10 mx-2.5 text-2xl">
+       
+       <div className="bg-red-600 basis-50">
+           Ajustes
+       </div>
 
-      <nav className="flex gap-6 text-sm">
-        <a href="#explorar">Explorar</a>
-        <a href="#constelaciones">Constelaciones</a>
-        <a href="#comunidad">Comunidad</a>
-        <a href="#crear">Crear</a>
-      </nav>
+       <div className="bg-sky-500 basis-50">
+           Sonido
+       </div>
+
+       <div className="bg-fuchsia-400 basis-50">
+           Niveles
+       </div>
+ 
+
+       <div className="bg-purple-400 basis-50">
+           Perfil
+       </div>
+ 
+
     </header>
   );
 }
+
+
+//  <div className='bg-amber-600 flex gap-x-28 justify-around py-2'> 
+//            <div className='basis-64 bg-red-700'>hola</div>
+//            <div className='basis-3xs bg-fuchsia-400'>hola</div>
+//            <div className='bg-amber-950 flex'>hola</div>
+//        </div>

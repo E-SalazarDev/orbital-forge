@@ -1,11 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
 import HomeScene from './scenes/home/Scenes'
-
+import Header from './components/header/Header';
 
 function HomePage() {
   return (
     <main className="relative h-screen w-full overflow-hidden bg-black">
+     {/* Header */}
+       <Header/>
+       
       <div className="absolute inset-0 z-0">
+        
         <HomeScene />
       </div>
 
