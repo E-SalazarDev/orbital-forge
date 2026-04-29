@@ -1,6 +1,15 @@
 export default function Header({}) {
   return (
-    <header className="bg-purple-600/20 flex justify-center py-7 gap-x-10 mx-2.5 text-2xl text-white font-semibold">
+    <header className="
+    bg-linear-to-r from-purple-900/40 via-indigo-900/30 to-sky-800/30 
+    shadow-[0_0_60px_rgba(168,85,247,0.7)]
+    border border-purple-500/10
+    backdrop-blur-[100px]
+    flex 
+    justify-center 
+    py-7 gap-x-10 mx-2.5 
+    text-2xl text-white font-semibold
+    ">
        
        <div 
        className="
