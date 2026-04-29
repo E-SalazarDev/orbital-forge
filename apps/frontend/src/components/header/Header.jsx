@@ -1,8 +1,13 @@
 export default function Header({}) {
   return (
-    <header className="bg-purple-600/20 flex justify-center py-7 gap-x-10 mx-2.5 text-2xl">
+    <header className="bg-purple-600/20 flex justify-center py-7 gap-x-10 mx-2.5 text-2xl ">
        
-       <div className="bg-red-600 basis-50">
+       <div className="bg-purple-600 basis-50 rounded-tl-2xl rounded-br-4xl font-semibold text-white [clip-path:polygon()]">
+          <span className="text-cyan-300">👾</span>
+          AlienSpace
+       </div>
+ 
+       <div className="bg-red-600 basis-50 ">
            Ajustes
        </div>
 
@@ -16,17 +21,10 @@ export default function Header({}) {
  
 
        <div className="bg-purple-400 basis-50">
-           Perfil
+           Login
        </div>
  
 
     </header>
   );
 }
-
-
-//  <div className='bg-amber-600 flex gap-x-28 justify-around py-2'> 
-//            <div className='basis-64 bg-red-700'>hola</div>
-//            <div className='basis-3xs bg-fuchsia-400'>hola</div>
-//            <div className='bg-amber-950 flex'>hola</div>
-//        </div>
