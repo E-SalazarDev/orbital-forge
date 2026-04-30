@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import { Stars } from '@react-three/drei'
 
 export default function HomeScene({ children }) {
+// nombre del componente debe estar en camelCase boxGeometry
 
 
   return (
@@ -40,7 +41,10 @@ export default function HomeScene({ children }) {
             0x888888  //color de las demas líneas
           ]} />
 
-
+        <mesh>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshBasicMaterial color={0x00ff00} />
+        </mesh>
         <OrbitControls
           enableZoom={true}
           enablePan={true}
