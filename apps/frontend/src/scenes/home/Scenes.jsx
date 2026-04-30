@@ -48,7 +48,13 @@ export default function HomeScene({ children }) {
           {/* <meshBasicMaterial color={0x00ff00} /> */}
         </mesh>
         {/* Sparkles */}
-        
+        <Sparkles
+          count={450}
+          scale={[7, 5, 4]}
+          size={3}
+          speed={1.6}
+          color="#facc15"
+        />
         <OrbitControls
           enableZoom={true}
           enablePan={true}
