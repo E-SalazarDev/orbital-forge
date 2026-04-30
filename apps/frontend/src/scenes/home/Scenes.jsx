@@ -1,10 +1,10 @@
 
-import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
+import { PerspectiveCamera, OrbitControls, Sparkles } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber'
 import { Stars } from '@react-three/drei'
 
 export default function HomeScene({ children }) {
-// nombre del componente debe estar en camelCase boxGeometry
+  // nombre del componente debe estar en camelCase boxGeometry
 
 
   return (
@@ -42,9 +42,13 @@ export default function HomeScene({ children }) {
           ]} />
 
         <mesh>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshBasicMaterial color={0x00ff00} />
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshBasicMaterial color="orange" wireframe />
+          {/* <boxGeometry args={[1, 1, 1]} /> */}
+          {/* <meshBasicMaterial color={0x00ff00} /> */}
         </mesh>
+        {/* Sparkles */}
+        
         <OrbitControls
           enableZoom={true}
           enablePan={true}
