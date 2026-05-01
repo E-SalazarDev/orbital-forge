@@ -2,7 +2,7 @@
 import { PerspectiveCamera, OrbitControls, Sparkles, Stars } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Canvas } from '@react-three/fiber'
-
+import Ship from '../../components/ship/Ship';
 export default function HomeScene({ children }) {
   // nombre del componente debe estar en camelCase boxGeometry
 
@@ -18,11 +18,13 @@ export default function HomeScene({ children }) {
           position: [0, 0, 10]
         }}
       >
-        {/* <color attach="background" args={['#100000']} /> */}
-
-        {/* <ambientLight intensity={10} /> */}
-        {/* <PerspectiveCamera makeDefault position={[0, 0, 3]} /> */}
-
+        {/* <color attach="background" args={['#020617']} /> */}
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[4, 6, 5]} intensity={3} />
+        <pointLight position={[0, 3, 4]} intensity={4} color="#22d3ee" />
+        {/* <pointLight position={[-3, 2, 3]} intensity={3} color="#facc15" /> */}
+        <Ship />
+        
         <Stars
           radius={100} //radio de distribución
           depth={50}    // profundidad de distribución, más alto hace que se extienda más lejos desde el centro 
@@ -41,38 +43,6 @@ export default function HomeScene({ children }) {
             0x888888  //color de las demas líneas
           ]} />
 
-        <mesh>
-          <meshBasicMaterial color="red" wireframe />
-
-        </mesh>
-
-        <mesh>
-          <sphereGeometry args={[4, 7, 9]} />
-          <meshBasicMaterial
-            color="blue" wireframe
-          />
-
-        </mesh>
-
-
-        <mesh position={[0, 0, 0]}>
-          <torusGeometry args={[5, 0.3, 9, 100]} />
-          <meshBasicMaterial
-            color="red" wireframe
-          />
-
-        </mesh>
-
-
-        {/* Sparkles */}
-        <Sparkles
-          count={450}
-          scale={[7, 5, 4]}
-          size={3}
-          speed={0}
-          color="#facc15"
-          noise={0}
-        />
         <OrbitControls
           enableZoom={true}
           enablePan={true}
