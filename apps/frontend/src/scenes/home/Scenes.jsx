@@ -51,9 +51,9 @@ export default function HomeScene({ children }) {
         //  maxDistance={40}
         // autoRotate  
         />
-        {/* <EffectComposer>
-          <Bloom intensity={1.8} luminanceThreshold={0.01} />
-        </EffectComposer> */}
+        <EffectComposer>
+          <Bloom intensity={1.1} luminanceThreshold={0.01} />
+        </EffectComposer>
       </Canvas>
     </div>
   )

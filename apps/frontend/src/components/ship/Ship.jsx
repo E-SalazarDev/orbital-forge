@@ -19,53 +19,52 @@ export default function Ship() {
 
                     {/* Base */}
                     <Base>
-                        <boxGeometry args={[10, 3, 3]} />
-                        {/* <meshStandardMaterial color="#444444" /> */}
+                        <boxGeometry args={[13, 2.6, 6]} />
                     </Base>
 
-                    
+
                     {/* Parte extra arriba (amarillo) */}
-                    <Addition  position={[4, 0, 0]}>
-                        <sphereGeometry  args={[2.4, 64, 64]} />
-                      
+                    <mesh position={[-1, 1.8, 0]} >
+                        {/* args: [radioSuperior, radioInferior, altura, segmentosRadiales] */}
+                        {/* <cylinderGeometry args={[1, 3, 2, 4]} /> */}
+                        <cylinderGeometry args={[2, 3, 1.5, 6]} />
+                        <meshStandardMaterial
+                            color="yellow"
+                        //   metalness={0}
+                        //   roughness={0.1}
+                        />
+                    </mesh>
+
+                    <Addition position={[-4, 1.5, 0]} >
+                       
+                        <boxGeometry args={[6, 2, 6]} />
+                        <meshStandardMaterial
+                            color="black"  
+                        />
                     </Addition>
 
-                    <Addition  position={[-5, 0, 0]}>
-                     <boxGeometry args={[3, 3, 16]}  />
-                     {/* <meshStandardMaterial color="blue" /> */}
-                    </Addition>
+                    <mesh position={[0, 0, 0]} >
+                       
+                        <boxGeometry args={[6, 2, 12]} />
+                        <meshStandardMaterial
+                            color="black"  
+                        />
+                    </mesh>
 
-                    {/* Agujero con cilindro */}
-                    {/* <Subtraction position={[0, 0, 0]}>
-            <cylinderGeometry args={[0.3, 0.3, 2, 32]} />
-          </Subtraction> */}
+                    <mesh position={[-8, 0.5, 0]}>
+                        <boxGeometry args={[3, 3, 16]} />
+                        <meshStandardMaterial color="blue" />
+                    </mesh>
+
+
                 </Geometry>
 
-              
+
                 <meshStandardMaterial color="green" />
             </mesh>
-
-
-            {/* Debugs */}
-
-            {/* <mesh position={[5, 0, 0]}>
-                <sphereGeometry args={[2, 17, 9]} />
-                <meshStandardMaterial color="yellow" wireframe />
-            </mesh>
-
-          
-            <mesh >
-                <boxGeometry args={[10, 3, 3]} />
-                <meshStandardMaterial color="red" wireframe />
-            </mesh>
-
-            <mesh position={[-5, 0, 0]}>
-                
-                <boxGeometry args={[3, 3, 16]} />
-                <meshStandardMaterial color="blue" wireframe />
-            </mesh> */}
 
 
         </group>
     )
 }
+
