@@ -37,7 +37,7 @@ export default function HomeScene({ children }) {
 
         <gridHelper
           args={[
-            10, //tamaño grid 
+            25, //tamaño grid 
             10,  // num divisiones que divide cada lado del grid
             0x444444, //color lineas x y 
             0x888888  //color de las demas líneas

@@ -18,39 +18,46 @@ export default function Ship() {
         <Geometry>
           
           {/* Base */}
-          <Base>
+          {/* <Base>
             <boxGeometry args={[8, 2,3]} />
-          </Base>
+          </Base> */}
 
-
+ {/* <boxGeometry args={[1.5, 0.5, 0.8]} /> */}
           {/* Parte extra arriba (amarillo) */}
-          <Addition position={[0, 0, 0]}>
-            {/* <boxGeometry args={[1.5, 0.5, 0.8]} /> */}
+          {/* <Addition position={[0, 0, 0]}>
+           
             <sphereGeometry args={[1.5, 17, 9]}/>
-          </Addition>
+          </Addition> */}
 
           {/* Agujero con cilindro */}
-          <Subtraction position={[0, 0, 0]}>
+          {/* <Subtraction position={[0, 0, 0]}>
             <cylinderGeometry args={[0.3, 0.3, 2, 32]} />
-          </Subtraction>
+          </Subtraction> */}
         </Geometry>
 
         {/* 🔧 color principal */}
         <meshStandardMaterial color="green" />
       </mesh>
 
-      {/* 🟡 PIEZA SUPERIOR SEPARADA (para ver diferencias) */}
-      <mesh position={[0, 0, 0]}>
-       <sphereGeometry args={[1.5, 17, 9]}/>
+     
+{/* Debugs */}
+
+      <mesh position={[5, 0, 0]}>
+       <sphereGeometry args={[2, 17, 9]}/>
         <meshStandardMaterial color="yellow" wireframe />
       </mesh>
 
-      {/* 🔴 DEBUG cilindro */}
-      {/* <mesh >
-      
-        <cylinderGeometry args={[0.3, 0.3, 2, 32]} />
+      {/* box red */}
+      <mesh >
+        <boxGeometry args={[10, 3,3]} />
         <meshStandardMaterial color="red" wireframe  />
-      </mesh> */}
+      </mesh>
+       
+       <mesh position={[-5,0,0]}>
+      {/* blue */}
+        <boxGeometry args={[3, 3,16]} />
+        <meshStandardMaterial color="blue" wireframe  />
+      </mesh>
 
     </group>
   )
