@@ -1,7 +1,7 @@
 
-import { PerspectiveCamera, OrbitControls, Sparkles } from '@react-three/drei';
+import { PerspectiveCamera, OrbitControls, Sparkles, Stars } from '@react-three/drei';
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Canvas } from '@react-three/fiber'
-import { Stars } from '@react-three/drei'
 
 export default function HomeScene({ children }) {
   // nombre del componente debe estar en camelCase boxGeometry
@@ -42,18 +42,36 @@ export default function HomeScene({ children }) {
           ]} />
 
         <mesh>
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color="orange" wireframe />
-          {/* <boxGeometry args={[1, 1, 1]} /> */}
-          {/* <meshBasicMaterial color={0x00ff00} /> */}
+          <meshBasicMaterial color="red" wireframe />
+        
         </mesh>
+
+        <mesh>
+          <sphereGeometry args={[4, 7, 9]} />
+          <meshBasicMaterial
+            color="blue" wireframe
+          />
+
+        </mesh>
+
+
+        <mesh position={[0, 0, 0]}>
+          <torusGeometry args={[5, 0.3, 9, 100]} />
+          <meshBasicMaterial 
+          color="red" wireframe 
+          />
+
+        </mesh>
+
+
         {/* Sparkles */}
         <Sparkles
           count={450}
           scale={[7, 5, 4]}
           size={3}
-          speed={1.6}
+          speed={0}
           color="#facc15"
+          noise={0}
         />
         <OrbitControls
           enableZoom={true}
