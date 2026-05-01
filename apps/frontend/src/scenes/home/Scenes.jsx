@@ -43,7 +43,7 @@ export default function HomeScene({ children }) {
 
         <mesh>
           <meshBasicMaterial color="red" wireframe />
-        
+
         </mesh>
 
         <mesh>
@@ -57,8 +57,8 @@ export default function HomeScene({ children }) {
 
         <mesh position={[0, 0, 0]}>
           <torusGeometry args={[5, 0.3, 9, 100]} />
-          <meshBasicMaterial 
-          color="red" wireframe 
+          <meshBasicMaterial
+            color="red" wireframe
           />
 
         </mesh>
@@ -81,8 +81,9 @@ export default function HomeScene({ children }) {
         //  maxDistance={40}
         // autoRotate  
         />
-
-
+        <EffectComposer>
+          <Bloom intensity={1.8} luminanceThreshold={0.01} />
+        </EffectComposer>
       </Canvas>
     </div>
   )
