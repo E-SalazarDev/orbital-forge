@@ -51,6 +51,13 @@ export default function Wing({ }) {
                         <sphereGeometry args={[1, 64, 64]} />
                         <meshStandardMaterial color="yellow" />
                     </Subtraction>
+                        
+
+                    <Subtraction position={[0, 0, 2]}>
+                        <sphereGeometry args={[0.6, 32, 32]} />
+                        <meshStandardMaterial color="yellow" />
+                    </Subtraction>
+                        
                 </Geometry>
                 <meshStandardMaterial
                     color="#ef233c"
