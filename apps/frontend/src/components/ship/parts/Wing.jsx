@@ -38,21 +38,25 @@ export default function Wing({ }) {
                     </Subtraction>
 
 
-                    
+
                     <Subtraction position={[0, 0, 1]} >
                         {/* <torusGeometry args={[2, 0.4, 64, 64]} /> */}
                         <torusGeometry args={[1.3, 0.4, 64, 64]} />
                         {/* <torusGeometry args={[2, 0.3, 64, 6]} /> */}
                         <meshStandardMaterial color="skyblue" />
                     </Subtraction>
-                       
 
-                    <mesh position={[0,0,-1]}>
-                        <sphereGeometry args={[1, 64, 64]} />  
+
+                    <Subtraction position={[0, 0, -1]}>
+                        <sphereGeometry args={[1, 64, 64]} />
                         <meshStandardMaterial color="yellow" />
-                    </mesh>
+                    </Subtraction>
                 </Geometry>
-                <meshStandardMaterial color="gray" />
+                <meshStandardMaterial
+                    color="#ef233c"
+                    metalness={0.35}
+                    roughness={0.45}
+                />
 
 
             </mesh>
