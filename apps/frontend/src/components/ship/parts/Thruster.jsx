@@ -1,5 +1,4 @@
-export default function Cockpit({}) {
-
+export default function Thruster({}) {
 
     return(
         <>

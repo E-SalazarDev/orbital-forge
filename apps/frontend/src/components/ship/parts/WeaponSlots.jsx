@@ -1,0 +1,1 @@
+export default function WeaponSlots(second) {third}

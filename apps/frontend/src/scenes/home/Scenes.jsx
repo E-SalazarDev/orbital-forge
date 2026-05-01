@@ -3,6 +3,9 @@ import { PerspectiveCamera, OrbitControls, Sparkles, Stars } from '@react-three/
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Canvas } from '@react-three/fiber'
 import Ship from '../../components/ship/Ship';
+import Nozzle from '../../components/ship/parts/Nozzle';
+import Wing from '../../components/ship/parts/Wing';
+
 export default function HomeScene({ children }) {
   // nombre del componente debe estar en camelCase boxGeometry
 
@@ -23,7 +26,9 @@ export default function HomeScene({ children }) {
         <directionalLight position={[4, 6, 5]} intensity={3} />
         <pointLight position={[0, 3, 4]} intensity={4} color="#22d3ee" />
         {/* <pointLight position={[-3, 2, 3]} intensity={3} color="#facc15" /> */}
-        <Ship />
+        {/* <Ship /> */}
+        <Wing />
+        {/* <Nozzle /> */}
         
         <Stars
           radius={100} //radio de distribución
@@ -51,9 +56,9 @@ export default function HomeScene({ children }) {
         //  maxDistance={40}
         // autoRotate  
         />
-        <EffectComposer>
+        {/* <EffectComposer>
           <Bloom intensity={1.1} luminanceThreshold={0.01} />
-        </EffectComposer>
+        </EffectComposer> */}
       </Canvas>
     </div>
   )
