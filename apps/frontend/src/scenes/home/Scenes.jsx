@@ -18,7 +18,7 @@ export default function HomeScene({ children }) {
           fov: 60,
           near: 0.1,
           far: 1000,
-          position: [0, 0, 10]
+          position: [10, 8, 10]
         }}
       >
         {/* <color attach="background" args={['#020617']} /> */}
@@ -26,8 +26,8 @@ export default function HomeScene({ children }) {
         <directionalLight position={[4, 6, 5]} intensity={3} />
         <pointLight position={[0, 3, 4]} intensity={4} color="#22d3ee" />
         {/* <pointLight position={[-3, 2, 3]} intensity={3} color="#facc15" /> */}
-        {/* <Ship /> */}
-        <Wing />
+        <Ship />
+        {/* <Wing /> */}
         {/* <Nozzle /> */}
         
         <Stars
