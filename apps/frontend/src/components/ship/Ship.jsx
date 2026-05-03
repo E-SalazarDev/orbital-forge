@@ -2,7 +2,7 @@ import { Geometry, Base, Subtraction, Addition } from '@react-three/csg'
 import { RoundedBox } from '@react-three/drei'
 import { RoundedBoxGeometry } from 'three-stdlib'
 import Wing from './parts/Wing'
-
+import InstallPart from './slots/InstallPart'
 // <sphereGeometry args={[4, 7, 9]} /> esfera // <torusGeometry args={[5, 0.3, 9, 100]} /> aro
 // rotation={[Math.PI / 2, 0, 0]}
 
@@ -58,11 +58,16 @@ export default function Ship() {
                     <meshStandardMaterial color="blue" />
                 </mesh>
 
-             
+
 
                 {/* TURBINAS */}
-                <Wing position={[0, 0.1, 4.6]} rotation={[0, Math.PI / 2, 0]} scale={0.78} />
-
+                {/* <Wing position={[0, 0.1, 4.6]} rotation={[0, Math.PI / 2, 0]} scale={0.78} /> */}
+                <InstallPart
+                    component={Wing}
+                    type="turbine"
+                    slot="wingOuter"
+                    mirror={true}
+                />
 
             </group>
         </group>
