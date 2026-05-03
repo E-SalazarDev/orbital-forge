@@ -46,9 +46,13 @@ function EngineBody() {
   )
 }
 
-export default function Wing() {
+export default function Wing({
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+  scale = 1,
+}) {
   return (
-    <group position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1}>
+    <group position={position} rotation={rotation} scale={scale}>
       <mesh>
         <Geometry>
           {/* Base plana de la pieza */}
