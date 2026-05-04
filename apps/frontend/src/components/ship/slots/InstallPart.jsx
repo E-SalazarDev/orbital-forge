@@ -31,11 +31,8 @@ export default function InstallPart({
     -config.position[2],
   ]
 
-  const mirrorRotation = [
-    config.rotation[0],
-    -config.rotation[1],
-    config.rotation[2],
-  ]
+  
+  const mirrorRotation = config.rotation
 
   return (
     <>
