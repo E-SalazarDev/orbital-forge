@@ -76,3 +76,5 @@ Evaluación
 Exportación
 ↓
 Integración en el juego
+
+.\env\Scripts\Activate.ps1
