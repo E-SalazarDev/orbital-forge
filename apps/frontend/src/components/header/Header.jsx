@@ -1,50 +1,61 @@
-export default function Header({}) {
+export default function Header() {
+  const menuItems = ['Ajustes', 'Sonido', 'Niveles', 'Login']
+
   return (
     <header
       className="
-    bg-linear-to-r from-purple-900/40 via-indigo-900/30 to-sky-800/30 
-    shadow-[0_0_60px_rgba(168,85,247,0.9)]
-    border border-purple-500/20
-    backdrop-blur-[180px]
-    flex flex-wrap
-    justify-center
-    items-center 
-    py-7 
-    gap-x-10 gap-y-4
-    mx-2.5 
-    text-2xl text-white font-semibold
-    "
+        fixed top-4 left-1/2 z-50
+        w-[calc(100%-2rem)] max-w-7xl
+        -translate-x-1/2
+        rounded-3xl
+        border border-cyan-300/20
+        bg-slate-950/45
+        px-4 py-3
+        shadow-[0_0_50px_rgba(34,211,238,0.18)]
+        backdrop-blur-2xl
+      "
     >
-      <div
-        className="
-          bg-purple-600 
-         text-yellow-400 
-           py-4 px-4 
-           flex items-center gap-2     
-           rounded-tl-2xl        
-          [clip-path:polygon(0%_0%,100%_0%,85%_100%,0%_100%)]
-          flex-none min-w-60
-       "
-      >
-        {/* <span className="text-cyan-300 ">👾</span> */}
-        AlienSpace
-      </div>
+      <nav className="flex items-center justify-between gap-4">
+        {/* Logo */}
+        <div
+          className="
+            flex h-12 min-w-52 items-center
+            rounded-2xl
+            bg-linear-to-r from-violet-600 via-fuchsia-500 to-cyan-400
+            px-5
+            text-xl font-black tracking-wide text-white
+            shadow-[0_0_30px_rgba(168,85,247,0.45)]
+            [clip-path:polygon(0%_0%,92%_0%,100%_50%,92%_100%,0%_100%)]
+          "
+        >
+          AlienSpace
+        </div>
 
-      <div className="bg-red-600  flex flex-1 min-w-30 items-center justify-center py-4 px-4  ">
-        Ajustes
-      </div>
-
-      <div className="bg-sky-500  flex flex-1 min-w-30 items-center justify-center py-4 px-4  ">
-        Sonido
-      </div>
-
-      <div className="bg-fuchsia-400  flex flex-1 min-w-30 items-center justify-center py-4 px-4  ">
-        Niveles
-      </div>
-
-      <div className="bg-purple-400 flex flex-1 min-w-30  justify-center items-center py-4 px-4">
-        Login
-      </div>
+        {/* Links */}
+        <div className="flex flex-1 items-center justify-end gap-3">
+          {menuItems.map((item) => (
+            <button
+              key={item}
+              className="
+                rounded-2xl
+                border border-white/10
+                bg-white/5
+                px-7 py-3
+                text-base font-semibold text-slate-100
+                shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]
+                transition-all duration-300
+                hover:-translate-y-0.5
+                hover:border-cyan-300/50
+                hover:bg-cyan-300/10
+                hover:text-cyan-200
+                hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]
+              "
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </nav>
     </header>
-  );
+  )
 }
