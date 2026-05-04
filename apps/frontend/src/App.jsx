@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <main className="relative h-screen w-full overflow-hidden bg-black">
      {/* Header */}
-       <Header/>
+       {/* <Header/> */}
 
       <div className="absolute inset-0 z-0">
         <HomeScene />
