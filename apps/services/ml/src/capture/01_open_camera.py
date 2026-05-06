@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import math
 
 camera = cv2.VideoCapture(0)
 
@@ -33,9 +34,37 @@ while camera.isOpened():
             drawing = np.zeros_like(frame)
 
             hull = cv2.convexHull(mayor)
+            hull_defectos = cv2.convexHull(mayor, returnPoints=False)
+            defectos = cv2.convexityDefects(mayor, hull_defectos)
+
+            dedos = 0
+
+            if defectos is not None:
+                for i in range(defectos.shape[0]):
+
+                    s, e, f, d = defectos[i][0]
+
+                    inicio = tuple(mayor[s][0])
+                    fin    = tuple(mayor[e][0])
+                    lejos  = tuple(mayor[f][0])
+
+                    a = math.dist(fin, inicio)
+                    b = math.dist(lejos, inicio)
+                    c = math.dist(fin, lejos)
+
+                    angulo = math.acos((b**2 + c**2 - a**2) / (2*b*c))
+
+                    if angulo <= math.pi / 2:
+                        dedos += 1
+                        cv2.circle(drawing, lejos, 8, (0, 255, 255), -1)
+
+            dedos = min(dedos + 1, 5)
 
             cv2.drawContours(drawing, [mayor], 0, (0, 255, 0), 2)
             cv2.drawContours(drawing, [hull], 0, (0, 0, 255), 3)
+
+            cv2.putText(drawing, f"Dedos: {dedos}", (10, 50),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 255, 255), 3)
 
             cv2.imshow("contorno y hull", drawing)
 
