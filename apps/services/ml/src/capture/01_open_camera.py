@@ -18,10 +18,15 @@ while camera.isOpened():
 
     mask = cv2.inRange(hsv, lower, upper)
 
+    kernel = np.ones((3, 3), np.uint8)
+    mask = cv2.erode(mask, kernel, iterations=1)
+    mask = cv2.dilate(mask, kernel, iterations=1)
+
     cv2.imshow("camara original", frame)
     cv2.imshow("mascara piel", mask)
 
-    if cv2.waitKey(1) == 27:
+    key = cv2.waitKey(1)
+    if key == 27 or key == ord('q'):
         break
 
 camera.release()
