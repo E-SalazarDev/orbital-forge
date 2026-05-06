@@ -22,6 +22,20 @@ while camera.isOpened():
     mask = cv2.erode(mask, kernel, iterations=1)
     mask = cv2.dilate(mask, kernel, iterations=1)
 
+    contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    if len(contours) > 0:
+
+        mayor = max(contours, key=cv2.contourArea)
+
+        if cv2.contourArea(mayor) > 5000:
+
+            drawing = np.zeros_like(frame)
+
+            cv2.drawContours(drawing, [mayor], 0, (0, 255, 0), 2)
+
+            cv2.imshow("contorno", drawing)
+
     cv2.imshow("camara original", frame)
     cv2.imshow("mascara piel", mask)
 
