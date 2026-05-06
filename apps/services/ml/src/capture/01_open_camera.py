@@ -1,7 +1,5 @@
-# pixel: [220, 170 130]
-# matriz de pixeles  frame[0][0] : [220, 170 130]
-
 import cv2
+import numpy as np
 
 camera = cv2.VideoCapture(0)
 
@@ -13,9 +11,17 @@ while camera.isOpened():
 
     frame = cv2.flip(frame, 1)
 
-    cv2.imshow("camara", frame)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    if cv2.waitKey(1) & 0xFF == 27:
+    lower = np.array([0, 48, 80], dtype="uint8")
+    upper = np.array([20, 255, 255], dtype="uint8")
+
+    mask = cv2.inRange(hsv, lower, upper)
+
+    cv2.imshow("camara original", frame)
+    cv2.imshow("mascara piel", mask)
+
+    if cv2.waitKey(1) == 27:
         break
 
 camera.release()
