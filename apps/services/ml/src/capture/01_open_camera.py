@@ -32,9 +32,12 @@ while camera.isOpened():
 
             drawing = np.zeros_like(frame)
 
-            cv2.drawContours(drawing, [mayor], 0, (0, 255, 0), 2)
+            hull = cv2.convexHull(mayor)
 
-            cv2.imshow("contorno", drawing)
+            cv2.drawContours(drawing, [mayor], 0, (0, 255, 0), 2)
+            cv2.drawContours(drawing, [hull], 0, (0, 0, 255), 3)
+
+            cv2.imshow("contorno y hull", drawing)
 
     cv2.imshow("camara original", frame)
     cv2.imshow("mascara piel", mask)
