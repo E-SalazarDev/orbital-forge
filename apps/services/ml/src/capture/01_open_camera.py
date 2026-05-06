@@ -3,6 +3,8 @@ import numpy as np
 import math
 
 camera = cv2.VideoCapture(0)
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 while camera.isOpened():
     ret, frame = camera.read()
@@ -23,15 +25,13 @@ while camera.isOpened():
     mask = cv2.erode(mask, kernel, iterations=1)
     mask = cv2.dilate(mask, kernel, iterations=1)
 
-    contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     if len(contours) > 0:
 
         mayor = max(contours, key=cv2.contourArea)
 
         if cv2.contourArea(mayor) > 5000:
-
-            drawing = np.zeros_like(frame)
 
             hull = cv2.convexHull(mayor)
             hull_defectos = cv2.convexHull(mayor, returnPoints=False)
@@ -52,24 +52,27 @@ while camera.isOpened():
                     b = math.dist(lejos, inicio)
                     c = math.dist(fin, lejos)
 
-                    angulo = math.acos((b**2 + c**2 - a**2) / (2*b*c))
+                    denominador = 2 * b * c
+                    if denominador == 0:
+                        continue
+
+                    coseno = (b**2 + c**2 - a**2) / denominador
+                    coseno = max(-1.0, min(1.0, coseno))
+                    angulo = math.acos(coseno)
 
                     if angulo <= math.pi / 2:
                         dedos += 1
-                        cv2.circle(drawing, lejos, 8, (0, 255, 255), -1)
+                        cv2.circle(frame, lejos, 8, (0, 255, 255), -1)
 
             dedos = min(dedos + 1, 5)
 
-            cv2.drawContours(drawing, [mayor], 0, (0, 255, 0), 2)
-            cv2.drawContours(drawing, [hull], 0, (0, 0, 255), 3)
+            cv2.drawContours(frame, [mayor], 0, (0, 255, 0), 2)
+            cv2.drawContours(frame, [hull], 0, (0, 0, 255), 2)
 
-            cv2.putText(drawing, f"Dedos: {dedos}", (10, 50),
+            cv2.putText(frame, f"Dedos: {dedos}", (10, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 255, 255), 3)
 
-            cv2.imshow("contorno y hull", drawing)
-
-    cv2.imshow("camara original", frame)
-    cv2.imshow("mascara piel", mask)
+    cv2.imshow("deteccion", frame)
 
     key = cv2.waitKey(1)
     if key == 27 or key == ord('q'):
