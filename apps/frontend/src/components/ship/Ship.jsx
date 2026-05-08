@@ -27,31 +27,46 @@ export default function Ship() {
 
                         {/* Base cuerpo */}
                         <Base>
-                            <boxGeometry args={[4, 0.5, 2]} />
+                            <boxGeometry args={[6, 0.4, 2]} />
 
                         </Base>
+                        
+                         {/* <Addition  position={[1, 0, 0]}>
+                            <boxGeometry args={[4, 0.2, 2.3]} />
+                            <meshStandardMaterial color="gray" />
+                        </Addition> */}
+                        
+                        <Subtraction  position={[2.6, 0, 0]}>
+                            <sphereGeometry args={[0.9,7, 4]} />
+                            <meshStandardMaterial color="purple" />
+                        </Subtraction>
+
+                       
 
                     </Geometry>
 
                     <meshStandardMaterial color="green" />
                 </mesh>
 
+
+
+
                 {/* Parte extra arriba*/}
-                <mesh position={[1, 0.6, 0]} >
+                <mesh position={[0.8, 0.4, 0]} >
                     {/* args: [radioSuperior, radioInferior, altura, segmentosRadiales] */}
 
-                    <cylinderGeometry args={[0.5, 1, 0.5, 6]} />
-                     <meshPhysicalMaterial
+                    <cylinderGeometry args={[0.5, 1, 0.6, 6]} />
+                    <meshPhysicalMaterial
                         color="#0f172a"
                         // color="#071a12"  
                         metalness={0.15}
                         roughness={0.08}
 
-                        transmission={0}         
+                        transmission={0}
                         transparent={true}
                         opacity={1}
 
-                        clearcoat={1}           
+                        clearcoat={1}
                         clearcoatRoughness={0.05}
 
                         reflectivity={1}
@@ -71,6 +86,15 @@ export default function Ship() {
                     <boxGeometry args={[0.6, 0.1, 8]} />
                     <meshStandardMaterial color="blue" />
                 </mesh>
+
+
+                <mesh position={[-0.1, 0.4, 0]}>
+                    <boxGeometry args={[2, 0.7, 1.5]} />
+                    <meshStandardMaterial color="red" />
+                </mesh>
+
+
+
 
 
 
