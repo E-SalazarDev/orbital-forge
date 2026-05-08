@@ -25,9 +25,9 @@ export default function Ship() {
                 <mesh>
                     <Geometry>
 
-                        {/* Base */}
+                        {/* Base cuerpo */}
                         <Base>
-                            <boxGeometry args={[8, 1.6, 4]} />
+                            <boxGeometry args={[4, 0.5, 2]} />
 
                         </Base>
 
@@ -37,24 +37,25 @@ export default function Ship() {
                 </mesh>
 
                 {/* Parte extra arriba*/}
-                <mesh position={[-1, 1.2, 0]} >
+                <mesh position={[1, 0.6, 0]} >
                     {/* args: [radioSuperior, radioInferior, altura, segmentosRadiales] */}
 
-                    <cylinderGeometry args={[1, 2, 1.5, 6]} />
+                    <cylinderGeometry args={[0.5, 1, 0.5, 6]} />
                     <meshPhysicalMaterial
                         color="skyblue"
                         metalness={0}      // El cristal no es metal
                         roughness={0}      // Totalmente liso
-                        transmission={1}   // ¡Esto lo hace cristal!
+                        transmission={8}   // ¡Esto lo hace cristal!
+                        // transmission={1}   // ¡Esto lo hace cristal!
                         thickness={0.5}    // Grosor del vidrio
                         transparent={true}
-                        opacity={0.7}      // Un poco de opacidad para que el color se note
+                        opacity={0.9}      // Un poco de opacidad para que el color se note
                         envMapIntensity={1} // Para que brille con el entorno
                     />
                 </mesh>
 
-                <mesh position={[0, 0.1, 0]}>
-                    <boxGeometry args={[1.3, 0.2, 17]} />
+                <mesh position={[0.1, 0.1, 0]}>
+                    <boxGeometry args={[0.6, 0.1, 8]} />
                     <meshStandardMaterial color="blue" />
                 </mesh>
 
