@@ -1,8 +1,8 @@
 export const shipSlots = {
   wingOuter: {
-    position: [0, 0.1, 4.6],
+    position: [0, 0.1, 2],
     rotation: [0, Math.PI / 2, 0],
-    scale: 0.78,
+    scale: 0.3,
     mirrorAxis: 'z',
     allowed: ['turbine', 'cannon'],
   },
