@@ -64,12 +64,13 @@ export default function Wing({
           <EngineBody />
 
           {/* Cortes tipo anillos para darle forma de turbina */}
-          <RingCut position={[0, 0, -0.9]} radius={1.4} tube={0.2} />
+          <RingCut position={[0, 0, -0.8]} radius={1.4} tube={0.3} />
           <RingCut position={[0, 0, 0]} radius={1.4} tube={0.2} />
           <RingCut position={[0, 0, 1]} radius={1.3} tube={0.4} />
 
           {/* Cortes redondeados internos */}
-          <SphereCut position={[0, 0, -1]} radius={1} />
+          <SphereCut position={[0, 0, -2]} radius={1.2} />
+          {/* cortes delanteros */}
           <SphereCut position={[0, 0, 2]} radius={0.6} widthSegments={24} heightSegments={24} />
         </Geometry>
 
