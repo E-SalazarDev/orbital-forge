@@ -41,16 +41,29 @@ export default function Ship() {
                     {/* args: [radioSuperior, radioInferior, altura, segmentosRadiales] */}
 
                     <cylinderGeometry args={[0.5, 1, 0.5, 6]} />
-                    <meshPhysicalMaterial
-                        color="skyblue"
-                        metalness={0}      // El cristal no es metal
-                        roughness={0}      // Totalmente liso
-                        transmission={8}   // ¡Esto lo hace cristal!
-                        // transmission={1}   // ¡Esto lo hace cristal!
-                        thickness={0.5}    // Grosor del vidrio
+                     <meshPhysicalMaterial
+                        color="#0f172a"
+                        // color="#071a12"  
+                        metalness={0.15}
+                        roughness={0.08}
+
+                        transmission={0}         
                         transparent={true}
-                        opacity={0.9}      // Un poco de opacidad para que el color se note
-                        envMapIntensity={1} // Para que brille con el entorno
+                        opacity={1}
+
+                        clearcoat={1}           
+                        clearcoatRoughness={0.05}
+
+                        reflectivity={1}
+                        envMapIntensity={2.5}
+
+                        sheen={1}
+                        sheenColor="#60a5fa"
+                        // sheenColor="#39ff88"
+
+                        emissive="#0b1220"
+                        //  emissive="#22c55e"      /
+                        emissiveIntensity={0.08}
                     />
                 </mesh>
 
