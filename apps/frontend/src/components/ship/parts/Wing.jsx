@@ -40,28 +40,64 @@ export default function Wing({ position = [0, 0, 0], rotation = [0, 0, 0], scale
           <SphereCut position={[0, 0, 2]} radius={0.6} widthSegments={24} heightSegments={24} />
         </Geometry>
 
+        {/* Material mejorado del cuerpo del motor — titanio quemado con iridiscencia */}
         <meshPhysicalMaterial
-            color="#4a2010"     // gris azulado, mismo lenguaje que el cuerpo
-          metalness={0.85}
-          roughness={0.35}
-          clearcoat={0.6}
-          clearcoatRoughness={0.25}
-          reflectivity={0.7}
-          envMapIntensity={2.5}
-          emissive="#1a0f00"
-          emissiveIntensity={0.06}  // casi nada, solo calidez sutil
+          color="#1c1410"           // casi negro con tinte cálido, titanio oxidado
+          metalness={0.95}
+          roughness={0.18}          // más pulido → más reflejos especulares
+          clearcoat={1.0}           // capa de barniz completa
+          clearcoatRoughness={0.08} // barniz muy liso
+          reflectivity={0.9}
+          envMapIntensity={3.5}     // reflejos de entorno fuertes
+          iridescence={0.6}         // iridiscencia sutil, como titanio quemado
+          iridescenceIOR={1.8}
+          iridescenceThicknessRange={[100, 400]}
+          emissive="#2a0e00"
+          emissiveIntensity={0.12}  // calor residual visible en aristas
+          sheen={0.1}               // brillo sedoso en ángulos rasantes
+          sheenColor="#ff6820"
+          sheenRoughness={0.5}
         />
       </mesh>
 
-      {/* Boca del motor — acento naranja contenido */}
+      {/* Boca del motor — plasma azul-blanco de alta energía */}
       <mesh position={[0, 0, 1.4]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[0.55, 0.08, 16, 32]} />
         <meshStandardMaterial
-          color="#2a1500"
-          emissive="#d4620a"     // naranja motor, no neón
+          color="#0a0a1a"
+          emissive="#4fc3ff"        // azul plasma frío, como ion thruster real
+          emissiveIntensity={3.5}   // muy brillante, que queme visualmente
+          roughness={0.05}
+          metalness={0.2}
+          toneMapped={false}        // permite que el emissive supere el rango HDR
+        />
+      </mesh>
+
+      {/* Anillo interior de combustión — corona naranja-blanco */}
+      <mesh position={[0, 0, 1.28]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.32, 0.055, 12, 32]} />
+        <meshStandardMaterial
+          color="#080400"
+          emissive="#fff0aa"        // blanco-amarillo, núcleo de combustión
+          emissiveIntensity={5.0}
+          roughness={0.0}
+          metalness={0.0}
+          toneMapped={false}
+        />
+      </mesh>
+
+      {/* Halo de calor difuso alrededor de la tobera */}
+      <mesh position={[0, 0, 1.55]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.7, 0.12, 8, 32]} />
+        <meshStandardMaterial
+          color="#000000"
+          emissive="#1a6fff"        // azul exterior del plasma
           emissiveIntensity={1.2}
-          roughness={0.3}
-          metalness={0.4}
+          roughness={0.8}
+          metalness={0.0}
+          transparent={true}
+          opacity={0.35}
+          toneMapped={false}
         />
       </mesh>
     </group>
