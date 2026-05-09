@@ -117,9 +117,9 @@ export default function Ship() {
 
                 {/* ── ALERÓN DERECHO ── */}
 
-                {/* 1. Raíz — une el cuerpo con el panel */}
+                {/* Conexión ala */}
                 <mesh position={[0.5, -0.04, 1.22]} rotation={[1.8, 0, 0]}>
-                    <cylinderGeometry args={[0.1, 0.1, 1]} />
+                    <cylinderGeometry args={[0.1, 0.1, 2]} />
                     {/* <boxGeometry args={[1.3, 0.13, 3.52]} /> */}
                     <meshPhysicalMaterial
                         color="#1e3f6e"
@@ -134,8 +134,8 @@ export default function Ship() {
                 </mesh>
 
                 {/* 2. Panel principal — superficie grande, dihedral negativo + barrido */}
-                <mesh position={[0.6, -0.24, 2.65]} rotation={[-0.30, 0.13, 0.16]}>
-                    <boxGeometry args={[3.9, 0.08, 2.0]} />
+                <mesh position={[0.3, -0.24, 2.22]} rotation={[-1, 3.2, 3.1]}>
+                    <boxGeometry args={[3.9, 0.08, 0.6]} />
                     <meshPhysicalMaterial
                         color="#1e3f6e"
                         metalness={0.78}
@@ -149,8 +149,8 @@ export default function Ship() {
                 </mesh>
 
                 {/* 3. Borde de salida — lamina fina, más inclinada */}
-                <mesh position={[1.55, -0.46, 3.62]} rotation={[-0.42, 0.20, 0.12]}>
-                    <boxGeometry args={[1.7, 0.045, 0.52]} />
+                <mesh position={[0.5, -0.1, 1.70]} rotation={[-1, 3.2, 3.1]}>
+                    <boxGeometry args={[2.7, 0.045, 0.52]} />
                     <meshPhysicalMaterial
                         color="#1e3f6e"
                         metalness={0.82}
