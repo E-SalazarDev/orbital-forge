@@ -190,20 +190,22 @@ export default function Ship() {
                 </mesh>
 
                 {/* Panel azul lateral — detalle sobre el fuselaje */}
-                <mesh position={[-0.2, 0.22, 0.6]}>
-                    <boxGeometry args={[2.2, 0.06, 0.55]} />
-                    <meshPhysicalMaterial {...MAT.panelBlue} />
-                </mesh>
-                <mesh position={[-0.2, 0.22, -0.6]}>
-                    <boxGeometry args={[2.2, 0.06, 0.55]} />
+                {/* <mesh position={[-0.2, 0.22, 0.6]}>
+                 
                     <meshPhysicalMaterial {...MAT.panelBlue} />
                 </mesh>
 
-                {/* Franja naranja dorsal — marking */}
+                
+                <mesh position={[-0.2, 0.22, -0.6]}>
+                  
+                    <meshPhysicalMaterial {...MAT.panelBlue} />
+                </mesh>
+
+              
                 <mesh position={[0.4, 0.22, 0]}>
                     <boxGeometry args={[1.8, 0.06, 0.22]} />
                     <meshPhysicalMaterial {...MAT.wingEdge} />
-                </mesh>
+                </mesh> */}
 
                 {/* ══════════════════════════════════════
                     COCKPIT
@@ -223,7 +225,7 @@ export default function Ship() {
 
                 {/* Franja naranja en base cockpit */}
                 <mesh position={[-0.1, 0.76, 0]}>
-                    <boxGeometry args={[1.8, 0.06, 1.72]} />
+                    <boxGeometry args={[1.9, 0.1, 1.72]} />
                     <meshPhysicalMaterial {...MAT.wingMain} />
                 </mesh>
 
@@ -254,14 +256,14 @@ export default function Ship() {
                 {/* ── ALERÓN IZQUIERDO ── */}
 
                 {/* Triángulo decorativo */}
-                <mesh
+                {/* <mesh
                     position={[-2, 0.3, -1.22]}
                     rotation={[THREE.MathUtils.degToRad(30), 1.9, 0]}
                     scale={[1, 0.52, 1]}
                 >
                     <cylinderGeometry args={[0.80, 0.85, 0.13, 3]} />
                     <meshPhysicalMaterial {...MAT.wingTriangle} />
-                </mesh>
+                </mesh> */}
 
                 {/* Conexión ala — tubo azul */}
                 <mesh position={[0.5, -0.04, -1.22]} rotation={[-1.8, 0, 0]}>
