@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-img = cv.imread('hands.jpeg')
+img = cv.imread('./img/hands1.jpg')
 
 cv.imshow("hands", img)
 
