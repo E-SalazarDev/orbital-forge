@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquitectura del Sistema — Juego Espacial</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 32px 24px 48px;
+  }
+  h1 {
+    color: #e2e0d8;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0.5;
+  }
+  svg {
+    width: 100%;
+    max-width: 860px;
+  }
+
+  /* Color tokens – dark mode */
+  .fill-purple   { fill: #3C3489; }
+  .fill-purple-s { fill: #26215C; }
+  .fill-teal     { fill: #085041; }
+  .fill-teal-s   { fill: #04342C; }
+  .fill-blue     { fill: #0C447C; }
+  .fill-blue-s   { fill: #042C53; }
+  .fill-amber    { fill: #633806; }
+  .fill-amber-s  { fill: #412402; }
+  .fill-coral    { fill: #712B13; }
+  .fill-coral-s  { fill: #4A1B0C; }
+  .fill-green    { fill: #27500A; }
+  .fill-green-s  { fill: #173404; }
+  .fill-gray     { fill: #444441; }
+  .fill-gray-s   { fill: #2C2C2A; }
+
+  .stroke-purple { stroke: #AFA9EC; }
+  .stroke-teal   { stroke: #5DCAA5; }
+  .stroke-blue   { stroke: #85B7EB; }
+  .stroke-amber  { stroke: #EF9F27; }
+  .stroke-coral  { stroke: #F0997B; }
+  .stroke-green  { stroke: #97C459; }
+  .stroke-gray   { stroke: #B4B2A9; }
+
+  text { font-family: 'Segoe UI', Arial, sans-serif; }
+  .t-title { font-size: 13px; font-weight: 600; }
+  .t-sub   { font-size: 11px; font-weight: 400; opacity: 0.75; }
+  .t-label { font-size: 10px; font-weight: 400; opacity: 0.55; }
+  .t-head  { font-size: 15px; font-weight: 600; }
+  .t-col   { font-size: 11px; font-weight: 400; opacity: 0.45; letter-spacing: 0.05em; }
+
+  .arr { stroke-width: 1.2; fill: none; }
+  .divider { stroke: #333; stroke-width: 0.5; stroke-dasharray: 4 4; }
+</style>
+</head>
+<body>
+<h1>Arquitectura del Sistema — Juego Espacial</h1>
+<svg viewBox="0 0 860 740" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#AFA9EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#85B7EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- ── CAPA 1: Cliente ── -->
+  <rect x="20" y="20" width="820" height="110" rx="14" class="fill-purple stroke-purple" stroke-width="0.6" fill-opacity="0.35" stroke-opacity="0.5"/>
+  <text x="430" y="46" text-anchor="middle" fill="#CECBF6" class="t-head">Cliente — navegador / app</text>
+
+  <!-- Box: React -->
+  <rect x="44" y="58" width="186" height="56" rx="8" class="fill-purple stroke-purple" stroke-width="0.5" fill-opacity="0.6"/>
+  <text x="137" y="81" text-anchor="middle" fill="#CECBF6" class="t-title">React + Tailwind</text>
+  <text x="137" y="99" text-anchor="middle" fill="#AFA9EC" class="t-sub">UI, menús, HUD del juego</text>
+
+  <!-- Box: Three.js -->
+  <rect x="250" y="58" width="186" height="56" rx="8" class="fill-purple stroke-purple" stroke-width="0.5" fill-opacity="0.6"/>
+  <text x="343" y="81" text-anchor="middle" fill="#CECBF6" class="t-title">Three.js / React Three Fiber</text>
+  <text x="343" y="99" text-anchor="middle" fill="#AFA9EC" class="t-sub">Escena 3D · raycasting · hits</text>
+
+  <!-- Box: MediaPipe -->
+  <rect x="456" y="58" width="186" height="56" rx="8" class="fill-purple stroke-purple" stroke-width="0.5" fill-opacity="0.6"/>
+  <text x="549" y="81" text-anchor="middle" fill="#CECBF6" class="t-title">MediaPipe (cliente)</text>
+  <text x="549" y="99" text-anchor="middle" fill="#AFA9EC" class="t-sub">Gestos de mano → eventos</text>
+
+  <!-- Box: Zustand -->
+  <rect x="662" y="58" width="156" height="56" rx="8" class="fill-purple stroke-purple" stroke-width="0.5" fill-opacity="0.6"/>
+  <text x="740" y="81" text-anchor="middle" fill="#CECBF6" class="t-title">Zustand / Context</text>
+  <text x="740" y="99" text-anchor="middle" fill="#AFA9EC" class="t-sub">Estado local del cliente</text>
+
+  <!-- Flechas cliente → gateway -->
+  <line x1="280" y1="130" x2="280" y2="178" class="arr stroke-purple" marker-end="url(#arrow-purple)"/>
+  <text x="292" y="158" fill="#AFA9EC" class="t-label">REST</text>
+  <line x1="430" y1="130" x2="430" y2="178" class="arr stroke-purple" marker-end="url(#arrow-purple)"/>
+  <text x="442" y="158" fill="#AFA9EC" class="t-label">WS</text>
+
+  <!-- ── CAPA 2: Gateway ── -->
+  <rect x="20" y="180" width="820" height="68" rx="12" class="fill-teal stroke-teal" stroke-width="0.6" fill-opacity="0.3" stroke-opacity="0.5"/>
+  <text x="430" y="207" text-anchor="middle" fill="#9FE1CB" class="t-title">Django REST Framework + Django Channels (WebSocket / ASGI)</text>
+  <text x="430" y="228" text-anchor="middle" fill="#5DCAA5" class="t-sub">Autenticación JWT · Rate limiting · Routing de eventos · Daphne / Uvicorn</text>
+
+  <!-- Flechas gateway → backend -->
+  <line x1="280" y1="248" x2="280" y2="288" class="arr stroke-teal" marker-end="url(#arrow-teal)"/>
+  <line x1="430" y1="248" x2="430" y2="288" class="arr stroke-teal" marker-end="url(#arrow-teal)"/>
+  <line x1="580" y1="248" x2="580" y2="288" class="arr stroke-teal" marker-end="url(#arrow-teal)"/>
+
+  <!-- ── CAPA 3: Apps Django ── -->
+  <rect x="20" y="290" width="820" height="170" rx="14" class="fill-blue stroke-blue" stroke-width="0.6" fill-opacity="0.3" stroke-opacity="0.4"/>
+  <text x="430" y="316" text-anchor="middle" fill="#B5D4F4" class="t-head">Backend Django — apps de negocio</text>
+
+  <!-- Fila 1 de apps -->
+  <rect x="36" y="328" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="95" y="347" text-anchor="middle" fill="#B5D4F4" class="t-title">pilots</text>
+  <text x="95" y="364" text-anchor="middle" fill="#85B7EB" class="t-sub">GameSession · PlayerRun</text>
+
+  <rect x="166" y="328" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="225" y="347" text-anchor="middle" fill="#B5D4F4" class="t-title">ships</text>
+  <text x="225" y="364" text-anchor="middle" fill="#85B7EB" class="t-sub">Ship · ShipPart</text>
+
+  <rect x="296" y="328" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="355" y="347" text-anchor="middle" fill="#B5D4F4" class="t-title">combat</text>
+  <text x="355" y="364" text-anchor="middle" fill="#85B7EB" class="t-sub">Motor de daño · eventos</text>
+
+  <rect x="426" y="328" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="485" y="347" text-anchor="middle" fill="#B5D4F4" class="t-title">missions</text>
+  <text x="485" y="364" text-anchor="middle" fill="#85B7EB" class="t-sub">Mission · EnemyTemplate</text>
+
+  <rect x="556" y="328" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="615" y="347" text-anchor="middle" fill="#B5D4F4" class="t-title">ai_engine</text>
+  <text x="615" y="364" text-anchor="middle" fill="#85B7EB" class="t-sub">Decisiones enemigas</text>
+
+  <rect x="686" y="328" width="132" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="752" y="347" text-anchor="middle" fill="#B5D4F4" class="t-title">progression</text>
+  <text x="752" y="364" text-anchor="middle" fill="#85B7EB" class="t-sub">XP · niveles · desbloqueos</text>
+
+  <!-- Fila 2 de apps -->
+  <rect x="36" y="386" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="95" y="405" text-anchor="middle" fill="#B5D4F4" class="t-title">inventory</text>
+  <text x="95" y="422" text-anchor="middle" fill="#85B7EB" class="t-sub">Items · recursos</text>
+
+  <rect x="166" y="386" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="225" y="405" text-anchor="middle" fill="#B5D4F4" class="t-title">economy</text>
+  <text x="225" y="422" text-anchor="middle" fill="#85B7EB" class="t-sub">Costos · recompensas</text>
+
+  <rect x="296" y="386" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="355" y="405" text-anchor="middle" fill="#B5D4F4" class="t-title">planets</text>
+  <text x="355" y="422" text-anchor="middle" fill="#85B7EB" class="t-sub">Planetas · biomas</text>
+
+  <rect x="426" y="386" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="485" y="405" text-anchor="middle" fill="#B5D4F4" class="t-title">equipment</text>
+  <text x="485" y="422" text-anchor="middle" fill="#85B7EB" class="t-sub">Armas · escudos · módulos</text>
+
+  <rect x="556" y="386" width="118" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="615" y="405" text-anchor="middle" fill="#B5D4F4" class="t-title">leaderboards</text>
+  <text x="615" y="422" text-anchor="middle" fill="#85B7EB" class="t-sub">Rankings · puntajes</text>
+
+  <rect x="686" y="386" width="132" height="46" rx="7" class="fill-blue stroke-blue" stroke-width="0.5" fill-opacity="0.7"/>
+  <text x="752" y="405" text-anchor="middle" fill="#B5D4F4" class="t-title">users · auth</text>
+  <text x="752" y="422" text-anchor="middle" fill="#85B7EB" class="t-sub">Registro opcional</text>
+
+  <!-- Flechas backend → datos -->
+  <line x1="250" y1="460" x2="250" y2="498" class="arr stroke-blue" marker-end="url(#arrow-blue)"/>
+  <line x1="430" y1="460" x2="430" y2="498" class="arr stroke-blue" marker-end="url(#arrow-blue)"/>
+  <line x1="620" y1="460" x2="620" y2="498" class="arr stroke-blue" marker-end="url(#arrow-blue)"/>
+
+  <!-- ── CAPA 4: Datos ── -->
+  <!-- PostgreSQL -->
+  <rect x="20" y="500" width="500" height="88" rx="12" class="fill-gray stroke-gray" stroke-width="0.6" fill-opacity="0.4" stroke-opacity="0.4"/>
+  <text x="270" y="528" text-anchor="middle" fill="#D3D1C7" class="t-title" font-size="14">PostgreSQL</text>
+  <text x="270" y="550" text-anchor="middle" fill="#B4B2A9" class="t-sub">Estado persistente · Todos los modelos del juego</text>
+  <text x="270" y="572" text-anchor="middle" fill="#888780" class="t-label" font-size="10">GameSession · PlayerRun · Ship · CombatSession · Mission · Equipment · Inventory</text>
+
+  <!-- Redis -->
+  <rect x="540" y="500" width="300" height="88" rx="12" class="fill-amber stroke-amber" stroke-width="0.6" fill-opacity="0.35" stroke-opacity="0.5"/>
+  <text x="690" y="528" text-anchor="middle" fill="#FAC775" class="t-title" font-size="14">Redis</text>
+  <text x="690" y="550" text-anchor="middle" fill="#EF9F27" class="t-sub">Cooldowns de armas (TTL nativo)</text>
+  <text x="690" y="572" text-anchor="middle" fill="#BA7517" class="t-sub">Estado de combate activo en caché</text>
+
+  <!-- Flechas datos → auxiliares -->
+  <line x1="200" y1="588" x2="140" y2="628" class="arr" stroke="#666" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="430" y1="588" x2="430" y2="628" class="arr" stroke="#666" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="680" y1="588" x2="740" y2="628" class="arr" stroke="#666" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ── CAPA 5: Servicios auxiliares ── -->
+  <!-- Celery -->
+  <rect x="20" y="630" width="234" height="80" rx="12" class="fill-coral stroke-coral" stroke-width="0.6" fill-opacity="0.35" stroke-opacity="0.5"/>
+  <text x="137" y="656" text-anchor="middle" fill="#F5C4B3" class="t-title">Celery + Redis broker</text>
+  <text x="137" y="675" text-anchor="middle" fill="#F0997B" class="t-sub">Recompensas async</text>
+  <text x="137" y="693" text-anchor="middle" fill="#D85A30" class="t-sub">Rankings · limpieza de sesiones</text>
+
+  <!-- media_assets -->
+  <rect x="274" y="630" width="234" height="80" rx="12" class="fill-green stroke-green" stroke-width="0.6" fill-opacity="0.3" stroke-opacity="0.45"/>
+  <text x="391" y="656" text-anchor="middle" fill="#C0DD97" class="t-title">media_assets</text>
+  <text x="391" y="675" text-anchor="middle" fill="#97C459" class="t-sub">Modelos 3D · Texturas</text>
+  <text x="391" y="693" text-anchor="middle" fill="#639922" class="t-sub">Django Storages / S3 / local</text>
+
+  <!-- gestures -->
+  <rect x="528" y="630" width="312" height="80" rx="12" class="fill-gray stroke-gray" stroke-width="0.6" fill-opacity="0.35" stroke-opacity="0.35"/>
+  <text x="684" y="656" text-anchor="middle" fill="#D3D1C7" class="t-title">gestures (fase 3)</text>
+  <text x="684" y="675" text-anchor="middle" fill="#B4B2A9" class="t-sub">Telemetría de mano desde cliente</text>
+  <text x="684" y="693" text-anchor="middle" fill="#888780" class="t-sub">ML · MediaPipe corre en frontend</text>
+
+  <!-- Leyenda de fases -->
+  <rect x="20" y="728" width="820" height="1" fill="#333"/>
+  <text x="36" y="750" fill="#444" class="t-label" font-size="10">Fase 1 — Django + PostgreSQL + Redis</text>
+  <text x="300" y="750" fill="#444" class="t-label" font-size="10">Fase 2 — + Celery + Channels WebSocket</text>
+  <text x="580" y="750" fill="#444" class="t-label" font-size="10">Fase 3 — + Gestures + ML pipeline</text>
+</svg>
+<p style="color:#333; font-size:10px; margin-top:16px; text-align:center; letter-spacing:0.08em;">SISTEMA INTEGRADO · JUEGO ESPACIAL CON CONTROL POR GESTOS</p>
+</body>
+</html>
