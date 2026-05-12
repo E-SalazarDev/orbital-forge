@@ -35,3 +35,39 @@ class Ship(models.Model):
     def __str__(self):
         return self.name
 
+
+class ShipPart(models.Model):
+    class PartType(models.TextChoices):
+        HULL = "hull", "Hull"
+        CORE = "core", "Core"
+        ENGINE = "engine", "Engine"
+        LEFT_WING = "left_wing", "Left Wing"
+        RIGHT_WING = "right_wing", "Right Wing"
+        WEAPON_SYSTEM = "weapon_system", "Weapon System"
+        SHIELD_GENERATOR = "shield_generator", "Shield Generator"
+
+    class Status(models.TextChoices):
+        ACTIVE = "active", "Active"
+        DAMAGED = "damaged", "Damaged"
+        DESTROYED = "destroyed", "Destroyed"
+
+    ship = models.ForeignKey(
+        Ship,
+        on_delete=models.CASCADE,
+        related_name="parts",
+    )
+    part_type = models.CharField(
+        max_length=40,
+        choices=PartType.choices,
+    )
+    max_hp = models.PositiveIntegerField()
+    current_hp = models.PositiveIntegerField()
+    armor = models.PositiveIntegerField(default=0)
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.ACTIVE,
+    )
+
+    def __str__(self):
+        return f"{self.ship.name} - {self.part_type}"
