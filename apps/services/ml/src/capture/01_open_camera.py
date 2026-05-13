@@ -1,71 +1,71 @@
 import cv2 as cv
 import numpy as np
-from matplotlib import pyplot as plt
 
 
 img = cv.imread('./img/hands1.jpg')
 
+if img is None:
+    print("No se pudo cargar la imagen. Revisa la ruta ./img/hands1.jpg")
+    exit()
+
 cv.imshow("hands", img)
 
-# def rescaleFrame(frame, scale=0.75):
-#     width = int(frame.shape[1] * scale)
-#     height = int(frame.shape[0] * scale)
-
-# convertimos a hsv
+# Convertimos a HSV
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 
-# definir el rango de color menor
-lower_red = np.array([0, 40, 60])
-# rango superior de la piel
-upper_red = np.array([25,255,255])
+# Rango de color de piel
+lower_skin = np.array([0, 40, 60])
+upper_skin = np.array([25, 255, 255])
 
-# crear la mascara
-# Detectar piel en el rango de valores de píxeles inferiores y superiores en el espacio de color HSV
-mask = cv.inRange(hsv, lower_red, upper_red)
+# Crear máscara
+mask = cv.inRange(hsv, lower_skin, upper_skin)
 
-# aplicar la máscara a la imagen original
-resultado  =  cv.bitwise_and(img, img, mask=mask)
+# Aplicar máscara a la imagen original
+resultado = cv.bitwise_and(img, img, mask=mask)
 
-# Desenfocar la imagen para mejorar el enmascaramiento.
-blurred = cv.blur(resultado, (7,7))
+# Suavizar la máscara para limpiar ruido
+mask_blur = cv.blur(mask, (7, 7))
 
-# Thresh: Aplicar la trillada.
+# Convertir a blanco y negro
+ret, thresh = cv.threshold(mask_blur, 0, 255, cv.THRESH_BINARY)
 
-ret, thresh = cv.threshold(blurred,0,255,cv.THRESH_BINARY)
+# =========================
+# DETECTAR CONTORNO REAL
+# =========================
 
+contours, _ = cv.findContours(
+    thresh,
+    cv.RETR_EXTERNAL,
+    cv.CHAIN_APPROX_SIMPLE
+)
+
+img_contour = img.copy()
+
+if contours:
+    # Tomamos el contorno más grande
+    hand_contour = max(contours, key=cv.contourArea)
+
+    # Dibujar contorno de la mano
+    cv.drawContours(
+        img_contour,
+        [hand_contour],
+        -1,
+        (0, 255, 0),
+        3
+    )
+
+    # Calcular área
+    area = cv.contourArea(hand_contour)
+    print("Área detectada:", area)
+
+else:
+    print("No se detectó ningún contorno.")
+
+# Mostrar resultados
 # cv.imshow("Mask", mask)
 cv.imshow("Result", resultado)
-cv.imshow("thresh", thresh)
+# cv.imshow("Thresh", thresh)
+cv.imshow("Contorno real de la mano", img_contour)
 
-# =========================
-# SIMULACIÓN DE LANDMARKS
-# =========================
-
-# puntos simulados (x, y)
-landmarks = {
-    0: (300, 400),   # muñeca
-    5: (280, 300),
-    6: (270, 250),
-    7: (265, 210),
-    8: (260, 170),   # punta dedo índice
-}
-
-# dibujar puntos
-for point in landmarks.values():
-    cv.circle(img, point, 8, (0, 255, 0), -1)
-
-# conexiones (simulan huesos del dedo)
-connections = [
-    (0, 5),
-    (5, 6),
-    (6, 7),
-    (7, 8),
-]
-
-# dibujar líneas
-for start, end in connections:
-    cv.line(img, landmarks[start], landmarks[end], (255, 0, 0), 3)
-    
-    
 cv.waitKey(0)
 cv.destroyAllWindows()
