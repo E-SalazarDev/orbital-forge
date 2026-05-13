@@ -36,5 +36,36 @@ ret, thresh = cv.threshold(blurred,0,255,cv.THRESH_BINARY)
 # cv.imshow("Mask", mask)
 cv.imshow("Result", resultado)
 cv.imshow("thresh", thresh)
+
+# =========================
+# SIMULACIÓN DE LANDMARKS
+# =========================
+
+# puntos simulados (x, y)
+landmarks = {
+    0: (300, 400),   # muñeca
+    5: (280, 300),
+    6: (270, 250),
+    7: (265, 210),
+    8: (260, 170),   # punta dedo índice
+}
+
+# dibujar puntos
+for point in landmarks.values():
+    cv.circle(img, point, 8, (0, 255, 0), -1)
+
+# conexiones (simulan huesos del dedo)
+connections = [
+    (0, 5),
+    (5, 6),
+    (6, 7),
+    (7, 8),
+]
+
+# dibujar líneas
+for start, end in connections:
+    cv.line(img, landmarks[start], landmarks[end], (255, 0, 0), 3)
+    
+    
 cv.waitKey(0)
 cv.destroyAllWindows()
