@@ -8,8 +8,6 @@ import HudStats from './layout/HudStats'
 import HudCorners from './layout/HudCorners'
 import HudEffects from './layout/HudEffects'
 
-import './hud.css'
-
 export default function HUD() {
   const [show, setShow] = useState(false)
 
@@ -20,10 +18,8 @@ export default function HUD() {
 
   return (
     <div
-      className="hud-root"
-      style={{
-        color: P.cyan,
-      }}
+      className="pointer-events-none absolute inset-0 font-mono"
+      style={{ color: P.cyan }}
     >
       <AnimatePresence>
         {show && (
