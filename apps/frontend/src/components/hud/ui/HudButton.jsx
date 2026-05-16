@@ -1,11 +1,24 @@
+import { motion } from 'motion/react'
 import { P } from '../../../lib/palette'
 
 export default function HudButton({ children, variant = 'primary' }) {
   const isPrimary = variant === 'primary'
 
   return (
-    <button
-      className={`hud-button ${isPrimary ? 'hud-button-primary' : 'hud-button-secondary'}`}
+    <motion.button
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
+      className={`
+        cursor-pointer rounded-sm px-5 py-3
+        font-mono text-[0.65rem] uppercase tracking-[0.22em]
+        transition-all duration-200
+        sm:px-8 sm:text-[0.72rem]
+        ${
+          isPrimary
+            ? 'border-0 font-bold text-white'
+            : 'border bg-transparent'
+        }
+      `}
       style={
         isPrimary
           ? {
@@ -13,30 +26,12 @@ export default function HudButton({ children, variant = 'primary' }) {
               boxShadow: `0 0 32px ${P.violet}55`,
             }
           : {
-              border: `1px solid ${P.cyan}88`,
+              borderColor: `${P.cyan}88`,
               color: P.cyan,
             }
       }
-      onMouseEnter={(e) => {
-        if (isPrimary) {
-          e.currentTarget.style.transform = 'scale(1.04)'
-          e.currentTarget.style.boxShadow = `0 0 48px ${P.violet}88`
-        } else {
-          e.currentTarget.style.background = `${P.cyan}15`
-          e.currentTarget.style.borderColor = P.cyan
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (isPrimary) {
-          e.currentTarget.style.transform = 'scale(1)'
-          e.currentTarget.style.boxShadow = `0 0 32px ${P.violet}55`
-        } else {
-          e.currentTarget.style.background = 'transparent'
-          e.currentTarget.style.borderColor = `${P.cyan}88`
-        }
-      }}
     >
       {children}
-    </button>
+    </motion.button>
   )
 }
