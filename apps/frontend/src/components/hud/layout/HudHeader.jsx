@@ -10,7 +10,15 @@ export default function HudHeader() {
       initial={{ opacity: 0, y: -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="hud-header"
+      className="
+        pointer-events-auto absolute left-0 right-0 top-0 z-20
+        flex items-center justify-between
+        px-4 py-4
+        sm:px-6
+        md:px-10
+        bg-linear-to-b from-[#04020f]/85 to-transparent
+        backdrop-blur-sm
+      "
       style={{
         borderBottom: `1px solid ${P.cyan}22`,
       }}
